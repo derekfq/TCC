@@ -98,6 +98,7 @@
         }
 
         .container-login100-form-btn {
+            text-align: center;
             margin-right: 10px;
             font-family: Inter;
 
@@ -118,10 +119,47 @@
           letter-spacing: 1px;
           transition: all 0.4s;
           border: none; /* Remover a borda */
+          margin-left: 10px;
         }
 
         .login100-form-btn:hover {
           background: #333333;
+        }
+      /* Estilos para o popup */
+      .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .popup {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 5px;
+            position: relative; /* Adicionado */
+        }
+
+        /* Estilos opcionais para o formulário */
+        form {
+            margin: 0;
+        }
+
+        input[type="file"] {
+            margin-bottom: 10px;
+        }
+
+        .close-button {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -139,15 +177,35 @@
     </div>
 
     <div id="map"></div>
-
     <div class="button-container">
-        <div class="container-login100-form-btn">
-            <button class="login100-form-btn">Importar CSV</button>
+    <button class="login100-form-btn" onclick="exibirPopup()">Importar CSV</button>
+
+    <div id="popupOverlay" class="overlay">
+        <div class="popup">
+            <span class="close-button" onclick="fecharPopup()">&times;</span>
+            <form id="formUpload" action="../Back/import_data.php" method="post" enctype="multipart/form-data">
+                <input type="file" name="arquivo" id="inputArquivo">
+                <div class="container-login100-form-btn">
+                    <button class="login100-form-btn" type="submit">Enviar</button>
+                </div>
+            </form>
         </div>
+    </div>
 
         <div class="container-login100-form-btn">
-            <button class="login100-form-btn">Importar áreas</button>
+            <button class="login100-form-btn">Filtrar áreas</button>
         </div>
     </div>
 </body>
+<script>
+        function exibirPopup() {
+            var popupOverlay = document.getElementById("popupOverlay");
+            popupOverlay.style.display = "flex";
+        }
+
+        function fecharPopup() {
+            var popupOverlay = document.getElementById("popupOverlay");
+            popupOverlay.style.display = "none";
+        }
+</script>
 </html>
