@@ -173,10 +173,10 @@
                 <a href="#">Opção 3</a>
             </div>
         </div>
-        <button class="logout-btn"></button>
+        <button class="logout-btn" onclick="logout()"> </button>
     </div>
 
-    <div id="map"></div>
+    <div id="map" style="background-image: url('images/mapa2.jpeg');"></div>
     <div class="button-container">
     <button class="login100-form-btn" onclick="exibirPopup()">Importar CSV</button>
 
@@ -193,7 +193,7 @@
     </div>
 
         <div class="container-login100-form-btn">
-            <button class="login100-form-btn">Filtrar áreas</button>
+            <button class="login100-form-btn">Filtrar areas</button>
         </div>
     </div>
 </body>
@@ -206,6 +206,9 @@
         function fecharPopup() {
             var popupOverlay = document.getElementById("popupOverlay");
             popupOverlay.style.display = "none";
+        }
+        function logout(){
+            window.location.href = "http://localhost/TCC/Front/login.html";
         }
 </script>
 </html>

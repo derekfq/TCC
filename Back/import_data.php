@@ -21,7 +21,6 @@
     
             $objReader = IOFactory::createReader('Xlsx');
             $objReader->setReadDataOnly(true);
-            $objReader->setLoadSheetsOnly(['Sheet1']); // Defina a planilha desejada
             $spreadsheet = $objReader->load($file['tmp_name']);
             $objWriter = new Csv($spreadsheet);
             $objWriter->setSheetIndex(0); // Define o índice da planilha desejada
